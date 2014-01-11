@@ -13,6 +13,7 @@ int main()
 	int i;
 
    Character Hero = {"", -1, -1};
+   Character Hero_f;
 
    for(i=0; i<9; i++)
    {
@@ -46,6 +47,7 @@ int main()
             break;
 
          case 2:
+            read_hero(Hero_f);
             break;
 
          case 3:

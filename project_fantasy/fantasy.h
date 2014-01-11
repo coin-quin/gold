@@ -34,10 +34,9 @@ typedef struct character_t {
 /* FONCTIONS */
 //Lecture et enregistrement des materias, armures et armes
 int read_materia(Materia* l_materia);
-
 int read_armor(Armor* l_armor);
-
 int read_weapon(Weapon* l_weapon);
+int read_hero(Character Hero_f);
 
 //Choix des armes, amrures, et materia
 void select_name(char* name);

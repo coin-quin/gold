@@ -45,7 +45,8 @@ int read_armor(Armor* l_armor)
 }
 
 //Lecture et enregistrement des armes
-int read_weapon(Weapon* l_weapon){
+int read_weapon(Weapon* l_weapon)
+{
 	FILE* fp = fopen("dat/weapon.dat","r");
 		if (fp == NULL)
 			return 0;
@@ -60,3 +61,21 @@ int read_weapon(Weapon* l_weapon){
 	return 1;
 }
 
+int read_hero(Character Hero_f)
+{
+   char* name = "";
+   printf("Entrez le nom du héros que vous voulez consulter :");
+   scanf("%s",name);
+
+   name = concat(name, ".hero");
+
+   FILE* fp = fopen(name, "r");
+      if (fp == NULL)
+         return 0;
+/*
+   while (fscanf(fp, "%[^\n] %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d", Hero_f.name ) != EOF)
+   {}
+*/
+   fclose(fp);
+   return 1;
+}

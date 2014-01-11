@@ -45,8 +45,9 @@ int make_hero(Character* Hero, Materia* l_materia, Weapon* l_weapon, Armor* l_ar
 	show_hero(Hero, l_weapon, l_armor, l_materia);
 
 	//Ecriture du hero
-	write_hero(Hero);
-		
+	if (!write_hero(Hero))
+      printf("L'enregistrement du Héros a échoué\n");
+   
 	printf("Vous pouvez retourner au menu(1) ou quitter(0) : ");
 	scanf("%d", &retour);
 
@@ -60,7 +61,9 @@ int write_hero(Character* Hero)
 	char* nom_f = concat(Hero->name, ".hero");
 
 	FILE* fp = fopen( nom_f, "w");
-	
+      if (fp == NULL)
+         return 0;
+
 	fprintf(fp,
 
 		"%s\n"//nom 
@@ -85,32 +88,31 @@ int write_hero(Character* Hero)
 	return 1;
 } //Fin write_hero
 
-
 //Afficher le hero
 void show_hero(Character* Hero, Weapon* l_weapon, Armor* l_armor, Materia* l_materia)
 {
-	printf( "------------------------------\n"
-		"Voici votre héros : \n"
-		"------------------------------\n"
-		"Nom : %s\n"
-		"Arme : %s\n"
-		"Materia de l'arme : %s  %s  %s  %s  %s  %s  %s  %s\n"
-		"Armure : %s\n"
-		"Materia de l'armure : %s  %s  %s  %s  %s  %s  %s  %s\n"
-		"Force : %d\nVitalité : %d\nMagie : %d\nDexterité : %d\nVitesse : %d\nChance : %d\n\n",
-		/* Nom */	   Hero->name,
-		/* Armre */	   l_weapon[Hero->weapon].name,
-		/* Materia */	l_materia[Hero->mat_w[0]].name, l_materia[Hero->mat_w[1]].name,
-                     l_materia[Hero->mat_w[2]].name, l_materia[Hero->mat_w[3]].name,
-                     l_materia[Hero->mat_w[4]].name, l_materia[Hero->mat_w[5]].name,
-                     l_materia[Hero->mat_w[6]].name, l_materia[Hero->mat_w[7]].name,
-		/* Armure */	l_armor[Hero->armor].name,
-		/* Materia */	l_materia[Hero->mat_a[0]].name, l_materia[Hero->mat_a[1]].name,
-                     l_materia[Hero->mat_a[2]].name, l_materia[Hero->mat_a[3]].name,
-                     l_materia[Hero->mat_a[4]].name, l_materia[Hero->mat_a[5]].name,
-                     l_materia[Hero->mat_a[6]].name, l_materia[Hero->mat_a[7]].name,
-		/* Force, vitalité, magie, dexterité, vitesse, chance */
-	                  Hero->str, Hero->vit, Hero->mag, Hero->dex, Hero->sp, Hero->luck
-	); //Fin printf();
+	printf(  "------------------------------\n"
+		      "Voici votre héros : \n"
+		      "------------------------------\n"
+		      "Nom : %s\n", Hero->name);
+
+	printf(  "Arme : %s\n"
+            "Materia de l'arme : ", l_weapon[Hero->weapon].name);
+
+   for (int i=0; i<=8; i++)
+      if (Hero->mat_w[i] != 22)
+         printf("%s ", l_materia[Hero->mat_w[i]].name);
+
+   printf(	"\nArmure : %s\n"
+      		"Materia de l'armure : ", l_armor[Hero->armor].name);
+
+   for (int i=0; i<=8; i++)
+      if (Hero->mat_a[i] != 22)
+         printf("%s ", l_materia[Hero->mat_a[i]].name);
+
+   printf(	"\nForce : %d\nVitalité : %d\nMagie : %d\nDexterité : %d\nVitesse : %d\nChance : %d\n\n",
+	         Hero->str, Hero->vit, Hero->mag, Hero->dex, Hero->sp, Hero->luck);
+
 } //Fin show_hero
+
 
