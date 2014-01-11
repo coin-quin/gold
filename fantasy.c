@@ -51,10 +51,9 @@ int select_weapon(Weapon* l_weapon, Materia* l_materia, int* choix_w)
 	int i, n_w;
 	for(i=0;i<=15;i++)
    {
-		printf("\033[31;01m%3d\033[00m || \033[4;01m%20s\033[00m ||
-            Force : \033[33;01m%3d\033[00m  | Dextérité : \033[36;01m%3d\033[00m
-            | Magie : \033[38;01m%3d\033[00m  | Slots materia : \033[39;01m%3d\033[00m \n"            , i, l_weapon[i].name, l_weapon[i].str, l_weapon[i].dex,
-            l_weapon[i].mag, l_weapon[i].slots);
+		printf("\033[31;01m%3d\033[00m || \033[4;01m%20s\033[00m || Force : \033[33;01m%3d\033[00m  | Dextérité : \033[36;01m%3d\033[00m | Magie : \033[38;01m%3d\033[00m  | Slots materia : \033[39;01m%3d\033[00m \n",
+            i, l_weapon[i].name, l_weapon[i].str, l_weapon[i].dex,
+            l_weapon[i].mag, l_weapon[i].slots );
 	}
 
 	do
