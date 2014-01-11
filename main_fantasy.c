@@ -1,5 +1,6 @@
 #include "fantasy.h"
 #include <stdio.h>
+#include <stdbool.h>
 #include <assert.h>
 
 #define NB_MAT 25
@@ -15,7 +16,7 @@ int main(){
                 Hero.mat_a[i]=MAT_MAX;
         }
 
-	//Création des structures
+   //Création des structures
         Materia l_materia[NB_MAT];
         Armor l_armor[NB_A];
         Weapon l_weapon[NB_W];        
@@ -25,7 +26,7 @@ int main(){
         assert(read_weapon(l_weapon));
         assert(read_armor(l_armor));
 
-        int choix =1;
+        int choix = true;
         while(choix){
                 menu();
                 scanf("%d", &choix);
@@ -35,7 +36,7 @@ int main(){
                         case 1:
                         select_name(Hero.name);        
                         if(!make_hero(&Hero, l_materia, l_weapon, l_armor))
-                                choix = 0;        
+                                choix = false;        
                                 break;
                         default :
                                 break;

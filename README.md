@@ -12,3 +12,6 @@ Objectif (fond) : Apprentissage du C
 		-Gestion des fichiers
 		-Gestion des structures
 		-Utilisation des pointeurs
+
+Compilation :
+	gcc --std=c99 -Wall -o TESTASY main_fantasy.c fantasy.c clean.c hero.c register.c
