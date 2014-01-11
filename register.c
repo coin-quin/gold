@@ -52,3 +52,4 @@ int read_weapon(Weapon* l_weapon){
 
 	return 1;
 }
+
