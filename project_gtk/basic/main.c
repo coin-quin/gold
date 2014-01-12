@@ -5,18 +5,20 @@
 int main(int argc,char **argv)
 { 
       /* Déclaration du widget */
-      GtkWidget *pWindow, *pLabel, *pBoxV, *pBoxH;
+      GtkWidget *pWindow, *pLabel, *pBoxV, *pBoxH, *pEntry;
       gtk_init(&argc,&argv);
               
       /* Création de la fenêtre */
       pWindow = make_window();
-//    pLabel = make_label(pWindow, "Héjààààààààààà<b> heheh </b>");
 
       pBoxH = make_box(HT);
       pBoxV = make_box(VT);
 
-      /* Ajout du bouton à la box */
+      /* Ajout des bouton et label à la box */
       add_button(pBoxV, EXEMPLE_1, "1", TF);
+
+      pLabel = make_label(pBoxV, "Héjààààààààààà<b> heheh </b>");
+      pEntry = make_entry(pBoxV, "Zone de texte");
 
       add_button(pBoxH, EXEMPLE_2, "_Nope", TT);
       add_button(pBoxH, EXEMPLE_1, "3", TF);

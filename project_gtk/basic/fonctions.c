@@ -41,15 +41,28 @@ GtkWidget* make_box(int dir)
    return pBox;
 }//Fin make_box
 
+//Création d'une ligne de saisie
+GtkWidget* make_entry(GtkWidget *pBox, char *base)
+{
+   GtkWidget *pEntry;
+   gchar* text = convert(base);
+   pEntry = gtk_entry_new();
+   gtk_entry_set_text(GTK_ENTRY(pEntry), text);
+   gtk_box_pack_start(GTK_BOX(pBox), pEntry, TRUE, TRUE, 1);
+
+   return pEntry;
+}//Fin make_entry
+
 //Création d'un label
-GtkWidget* make_label(GtkWidget *pF, char* base)
+GtkWidget* make_label(GtkWidget *pBox, char* base)
 {
    GtkWidget *pLabel;
    gchar* text = convert(base);
    pLabel = gtk_label_new(text);
    gtk_label_set_use_markup(GTK_LABEL(pLabel), TRUE);
    gtk_label_set_justify(GTK_LABEL(pLabel), GTK_JUSTIFY_FILL);
-   gtk_container_add(GTK_CONTAINER(pF), pLabel);
+
+   gtk_box_pack_start(GTK_BOX(pBox), pLabel, TRUE, TRUE, 1);
 
    return pLabel;
 }//Fin make_label

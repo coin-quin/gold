@@ -11,6 +11,7 @@
 #define FF 3
 
 GtkWidget* make_window();
+GtkWidget* make_entry(GtkWidget *pBox, char *base);
 GtkWidget* make_label(GtkWidget* pF, char* base);
 void add_button(GtkWidget *pF, gint iExemple, char* base, int dir);
 gchar* convert(char* base);
