@@ -24,16 +24,16 @@ GtkWidget* make_box(int dir)
    switch(dir)
    {
       default:
-      case HF:
+      case 0:
          pBox = gtk_hbox_new(FALSE, 0);
          break;
-      case HT:
+      case 1:
          pBox = gtk_hbox_new(TRUE, 0);
          break;        
-      case VF:
+      case 2:
          pBox = gtk_vbox_new(FALSE, 0);
          break;
-      case VT:
+      case 3:
          pBox = gtk_vbox_new(TRUE, 0);
          break;
    }
@@ -42,27 +42,24 @@ GtkWidget* make_box(int dir)
 }//Fin make_box
 
 //Création d'une ligne de saisie
-GtkWidget* make_entry(GtkWidget *pBox, char *base)
+GtkWidget* make_entry(char *base)
 {
    GtkWidget *pEntry;
    gchar* text = convert(base);
    pEntry = gtk_entry_new();
    gtk_entry_set_text(GTK_ENTRY(pEntry), text);
-   gtk_box_pack_start(GTK_BOX(pBox), pEntry, TRUE, TRUE, 1);
 
    return pEntry;
 }//Fin make_entry
 
 //Création d'un label
-GtkWidget* make_label(GtkWidget *pBox, char* base)
+GtkWidget* make_label(char* base)
 {
    GtkWidget *pLabel;
    gchar* text = convert(base);
    pLabel = gtk_label_new(text);
    gtk_label_set_use_markup(GTK_LABEL(pLabel), TRUE);
    gtk_label_set_justify(GTK_LABEL(pLabel), GTK_JUSTIFY_FILL);
-
-   gtk_box_pack_start(GTK_BOX(pBox), pLabel, TRUE, TRUE, 1);
 
    return pLabel;
 }//Fin make_label
@@ -75,13 +72,13 @@ void add_button(GtkWidget* pBox, gint iExemple, char* base, int dir)
    switch(iExemple)
    {
       default:
-      case EXEMPLE_1:
+      case 0:
          pButton = gtk_button_new_with_label(text);
          break;
-      case EXEMPLE_2:
+      case 1:
          pButton = gtk_button_new_with_mnemonic(text);
          break;
-      case EXEMPLE_3:
+      case 2:
          pButton = gtk_button_new_from_stock(GTK_STOCK_QUIT);
          break;
    }
@@ -92,16 +89,16 @@ void add_button(GtkWidget* pBox, gint iExemple, char* base, int dir)
    switch(dir)
    {  
       default:
-      case TT:
+      case 0:
          gtk_box_pack_start(GTK_BOX(pBox), pButton, TRUE, TRUE, 1);
          break;
-      case TF:
+      case 1:
          gtk_box_pack_start(GTK_BOX(pBox), pButton, TRUE, FALSE, 1);
          break;
-      case FT:
+      case 2:
          gtk_box_pack_start(GTK_BOX(pBox), pButton, FALSE, TRUE, 1);
          break;
-      case FF:
+      case 3:
          gtk_box_pack_start(GTK_BOX(pBox), pButton, FALSE, FALSE, 1);
          break;
    }
