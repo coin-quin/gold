@@ -55,17 +55,18 @@ GtkWidget* make_label(GtkWidget *pF, char* base)
 }//Fin make_label
 
 //Création d'un bouton
-void add_button(GtkWidget* pBox, gint iExemple, int dir)
+void add_button(GtkWidget* pBox, gint iExemple, char* base, int dir)
 {
    GtkWidget* pButton;
+   gchar* text = convert(base);
    switch(iExemple)
    {
       default:
       case EXEMPLE_1:
-         pButton = gtk_button_new_with_label("Quitter");
+         pButton = gtk_button_new_with_label(text);
          break;
       case EXEMPLE_2:
-         pButton = gtk_button_new_with_mnemonic("_Quitter");
+         pButton = gtk_button_new_with_mnemonic(text);
          break;
       case EXEMPLE_3:
          pButton = gtk_button_new_from_stock(GTK_STOCK_QUIT);

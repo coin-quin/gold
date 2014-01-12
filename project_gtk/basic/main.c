@@ -13,11 +13,16 @@ int main(int argc,char **argv)
 //    pLabel = make_label(pWindow, "Héjààààààààààà<b> heheh </b>");
 
       pBoxH = make_box(HT);
-      pBoxV = make_box(HF);
+      pBoxV = make_box(VT);
 
       /* Ajout du bouton à la box */
-      add_button(pBoxV, EXEMPLE_2, FT);
-      add_button(pBoxV, EXEMPLE_2, TF);
+      add_button(pBoxV, EXEMPLE_1, "1", TF);
+
+      add_button(pBoxH, EXEMPLE_2, "_Nope", TT);
+      add_button(pBoxH, EXEMPLE_1, "3", TF);
+      gtk_box_pack_start(GTK_BOX(pBoxV), pBoxH, TRUE, TRUE, 1);
+
+      add_button(pBoxV, EXEMPLE_3, "4",TT);
 
       /*Ajout de la box à la fenêtre */
       gtk_container_add(GTK_CONTAINER(pWindow), pBoxV);

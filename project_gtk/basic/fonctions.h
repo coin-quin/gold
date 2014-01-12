@@ -12,7 +12,7 @@
 
 GtkWidget* make_window();
 GtkWidget* make_label(GtkWidget* pF, char* base);
-void add_button(GtkWidget *pF, gint iExemple, int dir);
+void add_button(GtkWidget *pF, gint iExemple, char* base, int dir);
 gchar* convert(char* base);
 GtkWidget* make_box(int dir);
 void end_all(GtkWidget *pWidget, gpointer pData);
