@@ -8,6 +8,7 @@ GtkWidget *make_window()
    GtkWidget *pF = gtk_window_new(GTK_WINDOW_TOPLEVEL);
    gtk_window_set_title(GTK_WINDOW(pF), "Titre");
    gtk_window_set_default_size(GTK_WINDOW(pF), 320, 200);
+   gtk_window_set_deletable(GTK_WINDOW(pF), TRUE);
 
    g_signal_connect(G_OBJECT(pF), "destroy", G_CALLBACK(gtk_main_quit), NULL);
 
