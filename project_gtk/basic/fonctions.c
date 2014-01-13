@@ -17,6 +17,28 @@ GtkWidget* make_window()
    return pF;
 }//Fin make_window
 
+//Création d'une barre de menu
+GtkWidget* make_menu(GtkWidget *pF)
+{
+   GtkWidget *pMenuBar, *pMenuBase, *pMenuItem;
+   pMenuBar = gtk_menu_bar_new();
+   pMenuBase = gtk_menu_new();
+   pMenuItem = gtk_menu_item_new_with_label("New");  
+   gtk_menu_shell_append(GTK_MENU_SHELL(pMenuBase), pMenuItem);
+   pMenuItem = gtk_menu_item_new_with_label("Open");  
+   gtk_menu_shell_append(GTK_MENU_SHELL(pMenuBase), pMenuItem);
+   pMenuItem = gtk_menu_item_new_with_label("Save");  
+   gtk_menu_shell_append(GTK_MENU_SHELL(pMenuBase), pMenuItem);
+   pMenuItem = gtk_menu_item_new_with_label("Quit");  
+   g_signal_connect(G_OBJECT(pMenuItem), "activate", G_CALLBACK(end_all), pF);
+   gtk_menu_shell_append(GTK_MENU_SHELL(pMenuBase), pMenuItem);
+   
+   pMenuItem = gtk_menu_item_new_with_label("Fichier");
+   gtk_menu_item_set_submenu(GTK_MENU_ITEM(pMenuItem), pMenuBase);
+   gtk_menu_shell_append(GTK_MENU_SHELL(pMenuBar), pMenuItem);
+   return pMenuBar;
+}
+
 //Création d'une boite
 GtkWidget* make_box(int dir)
 {

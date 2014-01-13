@@ -10,7 +10,7 @@ int main(int argc,char **argv)
    const int TT = 0, TF = 1, FT = 2, FF = 3;
 
    /* Déclaration du widget */
-   GtkWidget *pWindow, *pBoxV, *pBoxH;
+   GtkWidget *pWindow, *pBoxV, *pBoxH, *pMenu;
    GtkWidget *pLabel;
    GtkWidget *pEntry;
    gtk_init(&argc,&argv);
@@ -19,8 +19,11 @@ int main(int argc,char **argv)
    pWindow = make_window();
    pBoxH = make_box(HT);
    pBoxV = make_box(VT);
+   pMenu = make_menu(pWindow);
 
    /* Ajout des bouton et label à la box */
+   gtk_box_pack_start(GTK_BOX(pBoxV), pMenu, FALSE, FALSE, 0);
+
    add_button(pBoxV, EXEMPLE_1, "1", TF);
 
    pLabel = make_label("<b> Jaloux Davy ? </b>");
@@ -29,7 +32,7 @@ int main(int argc,char **argv)
    pEntry = make_entry("Zone de texte");
    gtk_box_pack_start(GTK_BOX(pBoxV), pEntry, TRUE, TRUE, 1);
     
-   add_button(pBoxH, EXEMPLE_2, "_Nope", TT);
+   add_button(pBoxH, EXEMPLE_2, "No_pe", TT);
    add_button(pBoxH, EXEMPLE_1, "3", TF);
    gtk_box_pack_start(GTK_BOX(pBoxV), pBoxH, TRUE, TRUE, 1);
 
