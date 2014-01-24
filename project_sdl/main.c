@@ -3,7 +3,7 @@
 #include <SDL.h>
 #include "sdl.h"
 
-//Compiler : `sdl-config --cflags --libs` 
+//Compiler : `sdl-config --cflags --libs` --std=c99 
 
 int main(int argc, char *argv[])
 {
@@ -24,13 +24,14 @@ int main(int argc, char *argv[])
       return EXIT_FAILURE;
    }
 
-   rect = make_rect(rect, screen);
-   imgBackGround = make_background(imgBackGround, screen);
    item = make_item(item, screen);
+//   rect = make_rect(rect, screen);
+//   imgBackGround = make_background(imgBackGround, screen);
 
-   pause();
+   SDL_EnableKeyRepeat(10, 10);
+   pause(screen, item);
 
-   SDL_FreeSurface(imgBackGround);
+//   SDL_FreeSurface(imgBackGround);
    SDL_FreeSurface(item);
    SDL_Quit();    
    return EXIT_SUCCESS;
